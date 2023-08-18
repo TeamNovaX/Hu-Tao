@@ -14,4 +14,4 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 # CONTRIBUTORS
-[![Contributors](https://contrib.rocks/image?repo=NyaNekko/Hu-Tao)](https://github.com/NyaNekko/Hu-Tao/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=TeamNovaX/Hu-Tao)](https://github.com/TeamNovaX/Hu-Tao/graphs/contributors)
