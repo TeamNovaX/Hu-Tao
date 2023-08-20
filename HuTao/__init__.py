@@ -11,7 +11,8 @@ from HuTao.Config import (
     BOT_TOKEN,
     TIMEZONE,
     LOG_CHANNEL,
-    SUDO
+    SUDO,
+    DB_URL
 )
 
 #LOGGER SETUP

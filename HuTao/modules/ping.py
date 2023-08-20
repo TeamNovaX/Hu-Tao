@@ -26,5 +26,9 @@ async def ping(_, message):
 
 __mod__ = "MISC"
 __help__ = """
-» /Ping - Check If The Bot Is Alive
+**» /ping** - Check If The Bot Is Alive
+**» /joinreq** - To Turn On Approve And Decline Buttons In The Chat
+
+
+**[NOTE: JOIN REQUESTS ONLY WORKS IF APPROVE SETTINGS ARE ENABLED]**
 """
