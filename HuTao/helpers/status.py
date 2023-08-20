@@ -1,3 +1,7 @@
+#MIT License
+#Copyright (c) 2023, ©NovaNetworks
+
+
 from functools import wraps 
 
 from pyrogram import Client
@@ -6,7 +10,7 @@ from pyrogram.enums import ChatMemberStatus, ChatType
 
 from HuTao import BOT_ID, app, SUDO
 
-COMMANDERS = [ChatMemberStatus.ADMINISTRATOR,ChatMemberStatus.OWNER]
+COMMANDERS = [ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.OWNER]
 
 async def user_has_permission(chat_title : str, chat_id: int, user_id: int, permission: str,bot=True) -> tuple[bool, str]:
     try:

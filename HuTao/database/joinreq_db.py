@@ -1,3 +1,6 @@
+#MIT License
+#Copyright (c) 2023, ©NovaNetworks
+
 from HuTao.database import *
 
 jreq = dbname["jrequests"] 

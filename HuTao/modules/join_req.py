@@ -1,4 +1,6 @@
-import re
+#MIT License
+#Copyright (c) 2023, ©NovaNetworks
+
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message
 from pyrogram.enums import *

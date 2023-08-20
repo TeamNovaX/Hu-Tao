@@ -1,10 +1,12 @@
+#MIT License
+#Copyright (c) 2023, ©NovaNetworks
+
 #IMPORTS
 import os 
 import random
 from datetime import datetime 
-import requests as r 
 from telegraph import upload_file
-from PIL import Image , ImageDraw, ImageFont
+from PIL import Image , ImageDraw
 from pyrogram import *
 from pyrogram.types import *
 from pyrogram.enums import *
