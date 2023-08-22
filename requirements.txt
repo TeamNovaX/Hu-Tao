@@ -3,4 +3,6 @@ tgcrypto
 uvloop
 async_pymongo
 requests
-bs4
+beautifulsoup4
+motor
+asyncio
