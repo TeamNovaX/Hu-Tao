@@ -3,3 +3,4 @@ tgcrypto
 uvloop
 async_pymongo
 requests
+bs4
