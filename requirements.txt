@@ -2,3 +2,4 @@ pyrogram
 tgcrypto
 uvloop
 async_pymongo
+requests
