@@ -1953,9 +1953,9 @@ __help__ = """
 **» /anime (anime name)** - To Get The Anime Info
 **» /manga (manga name)** - To Get The Manga Info
 **» /character (character name)** - To Get The Character Info
-**» /gettags (character name)** - To Get The Anime Genere Tags
-**» /browse (character name)** - To Browse The Trending/Upcoming/Latest Animes
-**» /anisettings (character name)** - To Get The Settings About AniList
-**» /airing (character name)** - To Get The Airing Animes
-**» /top (character name)** - To Get The Top Animes
+**» /gettags** - To Get The Anime Genere Tags
+**» /browse** - To Browse The Trending/Upcoming/Latest Animes
+**» /anisettings** - To Get The Settings About AniList
+**» /airing (anime name)** - To Get The Airing Animes
+**» /top** - To Get The Top Animes
 """
