@@ -12,7 +12,9 @@ from HuTao.Config import (
     TIMEZONE,
     LOG_CHANNEL,
     SUDO,
-    DB_URL
+    DB_URL,
+    LOG_CHANNEL_ID,
+    OWNER
 )
 
 #LOGGER SETUP
