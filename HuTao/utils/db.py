@@ -8,12 +8,6 @@ from HuTao import DB_URL
 print("Connecting to Database ...")
 
 _MGCLIENT: AgnosticClient = AsyncIOMotorClient(DB_URL)
-_RUN = asyncio.get_event_loop().run_until_complete
-
-if "anibot" in _RUN(_MGCLIENT.list_database_names()):
-    print("anibot Database Found :) => Now Logging to it...")
-else:
-    print("anibot Database Not Found :( => Creating New Database...")
 
 _DATABASE: AgnosticDatabase = _MGCLIENT["anibot"]
 

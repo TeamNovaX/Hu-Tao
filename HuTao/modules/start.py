@@ -35,7 +35,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(text="DEVELOPER", url="https://t.me/KIRITO1240"),
-            InlineKeyboardButton(text="SOURCE",url="https://github.com/NyaNekko/Hu-Tao"),
+            InlineKeyboardButton(text="SOURCE",url="https://t.me/NovaNetworks"),
         ],
         [
             InlineKeyboardButton(text="HELP", callback_data="help_commands")           

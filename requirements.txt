@@ -6,3 +6,6 @@ requests
 beautifulsoup4
 motor
 asyncio
+telegraph
+pillow 
+unidecode
