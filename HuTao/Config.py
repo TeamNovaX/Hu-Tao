@@ -26,7 +26,7 @@ SUPPORT_CHAT = "NovaSupports"
 
 LOG_CHANNEL = "Weebs_Arena"
 
-LOG_CHANNEL_ID = -1001956854737
+LOG_CHANNEL_ID = -1001954310607
 
 OWNER = list({int(x)for x in ("6149191605").split()})
 

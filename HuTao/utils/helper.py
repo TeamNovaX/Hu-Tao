@@ -18,11 +18,10 @@ from pyrogram.types import (
     InlineKeyboardMarkup
 )
 
-from HuTao import OWNER, app, LOG_CHANNEL_ID
-from HuTao.utils.db import get_collection
+from .. import OWNER, app, LOG_CHANNEL_ID
+from ..utils.db import get_collection
 
-
-DOWN_PATH = DOWN_PATH = "downloads/"
+DOWN_PATH = "HuTao/downloads/"
 
 AUTH_USERS = get_collection("AUTH_USERS")
 IGNORE = get_collection("IGNORED_USERS")
@@ -31,6 +30,7 @@ GROUPS = get_collection("GROUPS")
 CC = get_collection('CONNECTED_CHANNELS')
 USER_JSON = {}
 USER_WC = {}
+
 
 def rand_key():
     return str(uuid4())[:8]
@@ -50,7 +50,7 @@ def control_user(func):
                 gidtitle = msg['chat']['title']
             await GROUPS.insert_one({"_id": gid, "grp": gidtitle})
             await clog(
-                "ANIBOT",
+                "HU-TAO",
                 f"Bot added to a new group\n\n{gidtitle}\nID: `{gid}`",
                 "NEW_GROUP"
             )
@@ -73,7 +73,7 @@ def control_user(func):
                                 +"\nElse you will be blacklisted"
                             ),
                         )
-                        await clog('ANIBOT', f'UserID: {user}', 'SPAM')
+                        await clog('HU-TAO', f'UserID: {user}', 'SPAM')
                     if USER_WC[user] == 5:
                         await IGNORE.insert_one({'_id': user})
                         await message.reply_text(
@@ -84,7 +84,7 @@ def control_user(func):
                                 +"@NovaSupports"
                             )
                         )
-                        await clog('ANIBOT', f'UserID: {user}', 'BAN')
+                        await clog('HU-TAO', f'UserID: {user}', 'BAN')
                         return
                     await asyncio.sleep(USER_WC[user])
                 else:
@@ -105,13 +105,13 @@ def control_user(func):
                 reply_msg = message.reply_to_message
             try:
                 await clog(
-                    'ANIBOT',
+                    'HU-TAO',
                     'Message:\n'+msg['text']+'\n\n'+"```"+e+"```", 'COMMAND',
                     msg=message,
                     replied=reply_msg
                 )
             except Exception:
-                await clog('ANIBOT', e, 'FAILURE', msg=message)
+                await clog('HU-TAO', e, 'FAILURE', msg=message)
     return wrapper
 
 
@@ -143,7 +143,7 @@ def check_user(func):
                             ),
                             show_alert=True
                         )
-                        await clog('ANIBOT', f'UserID: {user}', 'SPAM')
+                        await clog('HU-TAO', f'UserID: {user}', 'SPAM')
                 except KeyError:
                     pass
                 USER_JSON[user] = nt
@@ -160,14 +160,14 @@ def check_user(func):
                     reply_msg = c_q.message.reply_to_message
                 try:
                     await clog(
-                        'ANIBOT',
+                        'HU-TAO',
                         'Callback:\n'+cq['data']+'\n\n'+"```"+e+"```",
                         'CALLBACK',
                         cq=c_q,
                         replied=reply_msg
                     )
                 except Exception:
-                    await clog('ANIBOT', e, 'FAILURE', cq=c_q)
+                    await clog('HU-TAO', e, 'FAILURE', cq=c_q)
         else:
             if cqowner_is_ch:
                 if user_valid:
@@ -184,19 +184,19 @@ def check_user(func):
                             reply_msg = c_q.message.reply_to_message
                         try:
                             await clog(
-                                'ANIBOT',
+                                'HU-TAO',
                                 'Callback:\n'+cq['data']+'\n\n'+"```"+e+"```",
                                 'CALLBACK_ANON',
                                 cq=c_q,
                                 replied=reply_msg
                             )
                         except Exception:
-                            await clog('ANIBOT', e, 'FAILURE', cq=c_q)
+                            await clog('HU-TAO', e, 'FAILURE', cq=c_q)
                 else:
                     await c_q.answer(
                         (
                             "No one can click buttons on queries made by "
-                            +"channels unless connected with /connect!!!"
+                            +"channels unless connected with /aniconnect!!!"
                         ),
                         show_alert=True,
                     )
@@ -314,7 +314,6 @@ async def take_screen_shot(
     return thumb_image_path if os.path.exists(thumb_image_path) else None
 
 
-##################################################################
 
 async def get_user_from_channel(cid):
     try:
@@ -425,10 +424,10 @@ async def clog(
     if file:
         await app.send_document(LOG_CHANNEL_ID, file)
     if send_as_file:
-        with open("dataInQuestion.txt", "x") as text_file:
+        with open("dataInQuestio.txt", "x") as text_file:
             text_file.write()
-        await app.send_document(LOG_CHANNEL_ID, "dataInQuestion.txt")
-        os.remove("dataInQuestion.txt")
+        await app.send_document(LOG_CHANNEL_ID, "dataInQuestio.txt")
+        os.remove("dataInQuestio.txt")
 
 
 def get_btns(
@@ -448,22 +447,19 @@ def get_btns(
             InlineKeyboardButton(
                 text="Characters",
                 callback_data=(
-                    f"char_{result[2][0]}_ANI"
-                    +f"{qry}{pg}_{str(auth)}_1_{user}"
+                    f"char_{result[2][0]}_ANI" + f"{qry}{pg}_{str(auth)}_1_{user}"
                 )
             ),
             InlineKeyboardButton(
                 text="Description",
                 callback_data=(
-                    f"desc_{result[2][0]}_ANI"
-                    +f"{qry}{pg}_{str(auth)}_{user}"
+                    f"desc_{result[2][0]}_ANI" + f"{qry}{pg}_{str(auth)}_{user}"
                 )
             ),
             InlineKeyboardButton(
                 text="List Series",
                 callback_data=(
-                    f"ls_{result[2][0]}_ANI"
-                    +f"{qry}{pg}_{str(auth)}_{user}"
+                    f"ls_{result[2][0]}_ANI" + f"{qry}{pg}_{str(auth)}_{user}"
                 )
             ),
         ])

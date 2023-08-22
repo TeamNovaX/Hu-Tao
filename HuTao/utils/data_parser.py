@@ -12,7 +12,7 @@ from .helper import (
     day_,
     season_
 )
-from HuTao import BOT_NAME
+from .. import BOT_USERNAME
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from datetime import datetime
 
@@ -80,9 +80,7 @@ ANIME_TEMPLATE = """{name}
 {status_air}{gnrs_}{tags_}
 
 🎬 {trailer_link}
-📖 <a href="{surl}">Synopsis</a>
 📖 <a href="{url}">Official Site</a>
-<a href="https://t.me/{bot}?start=anirec_{idm}">Recommendations</a>
 
 {additional}"""
 
@@ -951,7 +949,7 @@ async def get_recommendations(id_):
     for i in rc_ls:
         outstr += (
             f"**{i[0]}**\n ➥[Synopsis]"
-            +f"(https://t.me/{BOT_NAME.replace('@', '')}?start=anime_{i[1]})"
+            +f"(https://t.me/{BOT_USERNAME}?astart=anime_{i[1]})"
             +f"\n ➥[Official Site]({i[2]})\n\n"
         )
     return outstr
@@ -1234,7 +1232,7 @@ async def get_anime(
         f"\n{bl}**{text[8]}:** `{', '.join(tags[:5])}`" if tags != []
         else ""
     )
-    bot = BOT_NAME.replace("@", "")
+    bot = BOT_USERNAME.replace("@", "")
     gnrs_ = ""
     if len(gnrs)!=0:
         gnrs_ = f"\n{bl}**{text[7]}:** `{gnrs}`"
@@ -1282,7 +1280,7 @@ async def get_anime(
             sql_id = i["node"]["id"]
             break
     additional = f"{prql}{sql}"
-    surl = f"https://t.me/{bot}/?start=des_ANI_{idm}_desc"
+    surl = f"https://t.me/{bot}/?astart=des_ANI_{idm}_desc"
     dura = (
         f"\n{bl}**{text[3]}:** `{duration} min/ep`"
         if duration is not None
@@ -1329,7 +1327,7 @@ async def get_anilist(
     # Data of all fields in returned json
     # pylint: disable=possibly-unused-variable
     idm = data.get("id")
-    bot = BOT_NAME.replace("@", "")
+    bot = BOT_USERNAME.replace("@", "")
     idmal = data.get("idMal")
     romaji = data["title"]["romaji"]
     english = data["title"]["english"]
@@ -1429,7 +1427,7 @@ async def get_anilist(
         )
     url = data.get("siteUrl")
     title_img = f"https://img.anili.st/media/{idm}"
-    surl = f"https://t.me/{bot}/?start=des_ANI_{idm}_desc"
+    surl = f"https://t.me/{bot}/?astart=des_ANI_{idm}_desc"
     hasNextPage = result["data"]["Page"]["pageInfo"]["hasNextPage"]
     try:
         finals_ = ANIME_TEMPLATE.format(**locals())
@@ -1522,8 +1520,8 @@ async def get_manga(
     if len(synopsis) > 500:
         description += f"..."
         description_s = (
-            f"[Click for more info](https://t.me/{BOT_NAME.replace('@', '')}"
-            +f"/?start=des_ANI_{idm}_desc)"
+            f"[Click for more info](https://t.me/{BOT_USERNAME}"
+            +f"/?astart=des_ANI_{idm}_desc)"
         )
     volumes = data.get("volumes")
     chapters = data.get("chapters")
@@ -1903,6 +1901,3 @@ def parse_filler(filler_id):
             "ac_ep": ", ".join(ac_ep),
         }
         return dict_
-
-
-#####         END        #####

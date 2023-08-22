@@ -9,7 +9,7 @@ print("Connecting to Database ...")
 
 _MGCLIENT: AgnosticClient = AsyncIOMotorClient(DB_URL)
 
-_DATABASE: AgnosticDatabase = _MGCLIENT["anibot"]
+_DATABASE: AgnosticDatabase = _MGCLIENT["HU-TAO"]
 
 
 def get_collection(name: str) -> AgnosticCollection:
