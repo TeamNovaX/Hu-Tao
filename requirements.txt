@@ -8,3 +8,4 @@ motor
 asyncio
 telegraph
 pillow 
+unidecode
