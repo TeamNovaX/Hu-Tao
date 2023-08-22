@@ -28,7 +28,7 @@ LOG_CHANNEL = "Weebs_Arena"
 
 LOG_CHANNEL_ID = -1001956854737
 
-OWNER = 6149191605
+OWNER = list({int(x)for x in ("6149191605").split()})
 
 DB_URL = "mongodb+srv://kirito1240:kito@hutao.bm9yhnj.mongodb.net/?retryWrites=true&w=majority"
 
