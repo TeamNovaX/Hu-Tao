@@ -1257,12 +1257,9 @@ async def get_anime(
                 f"\n{bl}**{text[4]}:** `{in_ls_stts}{fav}{in_ls_score}`"
             )
     if data["title"]["english"] is not None:
-        name = f"""[{c_flag}]**{romaji}**
-        __{english}__
-        {native}"""
+        name = f"""[{c_flag}]**{romaji}** | {native}"""
     else:
-        name = f"""[{c_flag}]**{romaji}**
-        {native}"""
+        name = f"""[{c_flag}]**{romaji}** | {native}"""
     prql, prql_id, sql, sql_id = "", "None", "", "None"
     for i in prqlsql:
         if i["relationType"] == "PREQUEL" and i["node"]["type"]=="ANIME":
