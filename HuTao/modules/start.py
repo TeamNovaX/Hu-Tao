@@ -14,6 +14,8 @@ from pyrogram.types import (
 from HuTao import BOT_NAME, BOT_USERNAME, HELPABLE, app, Hutao_Ver
 from HuTao.helpers import paginate_modules
 from HuTao.Config import COMMAND_HANDLER
+import HuTao.sql.rules_sql as sql
+from HuTao.helpers.string import *
 
 
 PM_TEXT = f"""
@@ -63,8 +65,8 @@ async def start(_, message: Message):
         )
     if len(message.text.split()) > 1:
         name = (message.text.split(None, 1)[1]).lower()
-        if "_" in name:
-            module = name.split("_", 1)[1]
+        if "help_" in name:
+            module = name.split("help_", 1)[1]
             text = (
                 "**⍟ HELP FOR: {mod}**\n".format(mod=HELPABLE[module].__mod__)
                 + HELPABLE[module].__help__
@@ -79,6 +81,11 @@ async def start(_, message: Message):
                 caption=text,
                 reply_markup=keyb,
             )
+        if "rules_" in name:
+            cid = name.split("rules_", 1)[1]
+            rules = sql.get_rules(cid)
+            textt = rules
+            await message.reply(f"**RULES FOR THIS CHAT ARE:**\n\n{textt}")
     else:
         await message.reply_photo(
             photo="https://graph.org//file/2bba048fefef637247d6a.png",

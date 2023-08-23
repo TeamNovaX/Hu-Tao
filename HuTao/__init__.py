@@ -14,7 +14,8 @@ from HuTao.Config import (
     SUDO,
     DB_URL,
     LOG_CHANNEL_ID,
-    OWNER
+    OWNER,
+    SQL_URL
 )
 
 #LOGGER SETUP

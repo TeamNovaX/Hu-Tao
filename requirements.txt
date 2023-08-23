@@ -9,3 +9,4 @@ asyncio
 telegraph
 pillow 
 unidecode
+psycopg2

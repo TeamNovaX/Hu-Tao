@@ -12,7 +12,8 @@ from pyrogram.types import *
 from pyrogram.enums import *
 
 #BOT FILE NAME
-from HuTao import app 
+from HuTao import app
+from HuTao.Config import COMMAND_HANDLER
 from HuTao.database.couples_db import _get_image, get_couple, save_couple
 
 def dt():
@@ -35,7 +36,7 @@ def dt_tom():
 tomorrow = str(dt_tom())
 today = str(dt()[0])
 
-@app.on_message(filters.command("couples"))
+@app.on_message(filters.command("couples", COMMAND_HANDLER))
 async def ctest(_, message):
     cid = message.chat.id
     if message.chat.type == ChatType.PRIVATE:
