@@ -11,4 +11,5 @@ pillow
 unidecode
 psycopg2
 cachetools
+sqlalchemy
 httpx[http2]
