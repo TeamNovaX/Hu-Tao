@@ -12,9 +12,8 @@ from logging import getLogger
 from pyrogram import __version__, idle
 from pyrogram.raw.all import layer
 
-from HuTao import LOG_CHANNEL, BOT_USERNAME, HELPABLE, app
+from HuTao import LOG_CHANNEL_ID, BOT_USERNAME, HELPABLE, app
 from HuTao.modules import ALL_MODULES
-from HuTao.Config import SUDO
 
 LOGGER = getLogger(__name__)
 loop = asyncio.get_event_loop()
@@ -43,7 +42,7 @@ async def start_bot():
 
     try:
         LOGGER.info("[INFO]: START MESSAGE")
-        await app.send_message(LOG_CHANNEL, f"BOT STARTED")
+        await app.send_message(LOG_CHANNEL_ID, f"BOT STARTED")
     except Exception as e:
         LOGGER.error(str(e))
     await idle()

@@ -10,7 +10,7 @@ from HuTao.Config import (
     API_ID,
     BOT_TOKEN,
     TIMEZONE,
-    LOG_CHANNEL,
+    LOG_CHANNEL_ID,
     SUDO,
     DB_URL,
     LOG_CHANNEL_ID,

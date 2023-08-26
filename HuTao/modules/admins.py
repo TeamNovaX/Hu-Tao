@@ -494,21 +494,21 @@ async def set_user_title(c: app, m: Message):
 @user_can_change_info
 @bot_admin
 @bot_can_change_info
-async def set_chat_photo(_, ctx: Message):
-    reply = ctx.reply_to_message
+async def set_chat_photo(_, message: Message):
+    reply = message.reply_to_message
     if not reply:
-        return await ctx.reply_text("Reply to a photo to set it as chat_photo")
+        return await message.reply_text("Reply to a photo to set it as chat_photo")
     file = reply.document or reply.photo
     if not file:
-        return await ctx.reply_text(
+        return await message.reply_text(
             "Reply to a photo or document to set it as chat photo"
         )
     if file.file_size > 5000000:
-        return await ctx.reply("File size too large.")
+        return await message.reply("File size too large.")
     photo = await reply.download()
     try:
-        await ctx.chat.set_photo(photo=photo)
-        await ctx.reply_text("Successfully Changed Group Photo")
+        await message.chat.set_photo(photo=photo)
+        await message.reply_text("Successfully Changed Group Photo")
     except Exception as err:
-        await ctx.reply(f"Failed changed group photo. ERROR: {err}")
+        await message.reply(f"Failed changed group photo. ERROR: {err}")
     os.remove(photo)

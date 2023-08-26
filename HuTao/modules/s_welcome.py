@@ -5,7 +5,7 @@ from pyrogram import *
 from pyrogram.types import *
 from logging import getLogger
 
-from HuTao import app, LOG_CHANNEL
+from HuTao import app, LOG_CHANNEL_ID
 from HuTao.database.wel_db import *
 from HuTao.Config import COMMAND_HANDLER
 
@@ -138,7 +138,7 @@ USERNAME: @{user.username}
 async def bot_wel(_, message):
     for u in message.new_chat_members:
         if u.id == app.me.id:
-            await app.send_message(LOG_CHANNEL, f"""
+            await app.send_message(LOG_CHANNEL_ID, f"""
 **NEW GROUP
 ➖➖➖➖➖➖➖➖➖➖➖➖
 NAME: {message.chat.title}
