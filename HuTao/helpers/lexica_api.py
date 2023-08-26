@@ -16,7 +16,7 @@ async def UpscaleImages(image: bytes) -> str:
                 data={"image_data": b},
                 timeout=None,
             )
-        if response.status_code = 200:
+        if response.status_code == 200:
             upscaled_file_path = "upscaled.png"
             with open(upscaled_file_path, "wb") as output_file:
                 output_file.write(response.content)
