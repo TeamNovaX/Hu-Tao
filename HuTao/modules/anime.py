@@ -147,9 +147,7 @@ example: /anime Sword Art Online"""
         )
 
 
-@app.on_message(
-    filters.command(["manga", f"manga{BOT_USERNAME}"], prefixes=COMMAND_HANDLER)
-)
+@app.on_message(filters.command(["manga", f"manga{BOT_USERNAME}"], prefixes=COMMAND_HANDLER))
 @control_user
 async def manga_cmd(client: Client, message: Message, mdata: dict):
     """Search Manga Info"""
