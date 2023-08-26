@@ -10,3 +10,4 @@ telegraph
 pillow 
 unidecode
 psycopg2
+httpx[http2]

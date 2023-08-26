@@ -33,3 +33,5 @@ OWNER = list({int(x)for x in ("6149191605").split()}) #OWNER ID
 DB_URL = ""
 
 SQL_URL = ""
+
+LEXICA_API = "https://lexica.qewertyy.me"
