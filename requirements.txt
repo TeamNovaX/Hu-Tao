@@ -10,4 +10,5 @@ telegraph
 pillow 
 unidecode
 psycopg2
+cachetools
 httpx[http2]
