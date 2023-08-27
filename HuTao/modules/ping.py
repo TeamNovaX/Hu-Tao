@@ -29,6 +29,8 @@ __help__ = """
 **» /ping** - Check If The Bot Is Alive
 **» /joinreq** - To Turn On Approve And Decline Buttons In The Chat
 **» /tgm** - Upload Photo (Under 5mb) To Cloud And Give Link 
+**» /upscale** - Reply To A Image To Upscale It (Improve Its Quality)
+
 
 
 **[NOTE: JOIN REQUESTS ONLY WORKS IF APPROVE SETTINGS ARE ENABLED]**

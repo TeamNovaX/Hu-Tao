@@ -12,7 +12,7 @@ from logging import getLogger
 from pyrogram import __version__, idle
 from pyrogram.raw.all import layer
 
-from HuTao import LOG_CHANNEL_ID, BOT_USERNAME, HELPABLE, app
+from HuTao import SUPPORT_CHAT, BOT_USERNAME, HELPABLE, app
 from HuTao.modules import ALL_MODULES
 
 LOGGER = getLogger(__name__)
@@ -42,7 +42,7 @@ async def start_bot():
 
     try:
         LOGGER.info("[INFO]: START MESSAGE")
-        await app.send_message(LOG_CHANNEL_ID, f"BOT STARTED")
+        await app.send_message(SUPPORT_CHAT, f"BOT STARTED")
     except Exception as e:
         LOGGER.error(str(e))
     await idle()

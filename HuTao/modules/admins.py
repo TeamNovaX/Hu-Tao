@@ -512,3 +512,23 @@ async def set_chat_photo(_, message: Message):
     except Exception as err:
         await message.reply(f"Failed changed group photo. ERROR: {err}")
     os.remove(photo)
+
+
+
+
+__mod__ = "ADMINS"
+__help__ = """
+**» User Commands:**
+» /adminlist: List all the admins in the Group.
+
+»**Admin only:**
+» /invitelink: Gets chat invitelink.
+» /promote: Promotes the user replied to or tagged (supports with title).
+» /demote: Demotes the user replied to or tagged.
+» /setgpic: Set group picture.
+» /admincache: Reloads the List of all the admins in the Group.
+» /zombies: Bans all the deleted accounts. (owner only)
+» /title: sets a custom title for an admin that the bot promoted.
+
+» **Example:**
+`/promote @username`: this promotes a user to admin."""

@@ -17,7 +17,8 @@ from HuTao.Config import (
     OWNER,
     SQL_URL,
     LEXICA_API,
-    COMMAND_HANDLER
+    COMMAND_HANDLER,
+    SUPPORT_CHAT
 )
 
 #LOGGER SETUP
