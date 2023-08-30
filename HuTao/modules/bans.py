@@ -599,32 +599,20 @@ USER: {message.from_user.mention}\n
           return
 
 
-# __PLUGIN__ = "bans"
+__mod__ = "BANS"
+__help__ = """
+» **Admin only:**
 
-# _DISABLE_CMDS_ = ["kickme"]
+» /kick: Kick the user replied or tagged.
+» /skick: Kick the user replied or tagged and delete your messsage.
+» /dkick: Kick the user replied and delete their message.
+» /ban: Bans the user replied to or tagged.
+» /sban: Bans the user replied or tagged and delete your messsage.
+» /dban: Bans the user replied and delete their message.
+» /tban <userhandle> x(message/h/d): Bans a user for x time. (via handle, or reply). message = minutes, h = hours, d = days.
+» /stban <userhandle> x(message/h/d): Silently bans a user for x time. (via handle, or reply). message = minutes, h = hours, d = days.
+» /dtban <userhandle> x(message/h/d): Silently bans a user for x time and delete the replied message. (via reply). message = minutes, h = hours, d = days.
+» /unban: Unbans the user replied to or tagged.
 
-# __alt_name__ = [
-#     "ban",
-#     "unban",
-#     "kickme",
-#     "kick",
-#     "tban",
-# ]
-
-# __HELP__ = """
-# **Bans**
-
-# **Admin only:**
-# • /kick: Kick the user replied or tagged.
-# • /skick: Kick the user replied or tagged and delete your messsage.
-# • /dkick: Kick the user replied and delete their message.
-# • /ban: Bans the user replied to or tagged.
-# • /sban: Bans the user replied or tagged and delete your messsage.
-# • /dban: Bans the user replied and delete their message.
-# • /tban <userhandle> x(message/h/d): Bans a user for x time. (via handle, or reply). message = minutes, h = hours, d = days.
-# • /stban <userhandle> x(message/h/d): Silently bans a user for x time. (via handle, or reply). message = minutes, h = hours, d = days.
-# • /dtban <userhandle> x(message/h/d): Silently bans a user for x time and delete the replied message. (via reply). message = minutes, h = hours, d = days.
-# • /unban: Unbans the user replied to or tagged.
-
-# **Example:**
-# `/ban @username`: this bans a user in the chat."""
+» **Example:**
+`/ban @username`: this bans a user in the chat."""
