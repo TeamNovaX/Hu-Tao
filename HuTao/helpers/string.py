@@ -6,7 +6,7 @@ from typing import List
 from pyrogram.enums import ChatType
 from pyrogram.types import InlineKeyboardButton, Message
 
-from HuTao import TIMEZONE
+from HuTao import TIME_ZONE
 from HuTao.helpers.parser import escape_markdown
 
 BTN_URL_REGEX = compile_re(r"(\[([^\[]+?)\]\(buttonurl:(?:/{0,2})(.+?)(:same)?\))")
@@ -20,7 +20,7 @@ async def extract_time(m: Message, time_val: str):
         if not time_num.isdigit():
             await m.reply("Unspecified amount of time.")
             return ""
-        initial_time = datetime.now(TIMEZONE)
+        initial_time = datetime.now(TIME_ZONE)
         if unit == "m":
             bantime = initial_time + timedelta(minutes=int(time_num))
         elif unit == "h":

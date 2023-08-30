@@ -4,6 +4,7 @@
 import time
 from logging import ERROR, INFO, StreamHandler, basicConfig, getLogger, handlers
 from pyrogram import Client
+import pytz
 
 from HuTao.Config import (
     API_HASH,
@@ -18,7 +19,7 @@ from HuTao.Config import (
     SQL_URL,
     LEXICA_API,
     COMMAND_HANDLER,
-    SUPPORT_CHAT
+    SUPPORT_CHAT,
 )
 
 #LOGGER SETUP
@@ -41,6 +42,7 @@ MOD_NOLOAD = []
 HELPABLE = {}
 start = time.time()
 Hutao_Ver = "0.0.1"
+TIME_ZONE = pytz.timezone(TIMEZONE)
 
 # --------------------------------- #
 

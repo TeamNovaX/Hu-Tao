@@ -61,7 +61,8 @@ async def approve_join_req(_, cq: CallbackQuery):
     except Exception as e:
        print(str(e))
     ok, user_id = cq.data.split("#")
-    try:
+    if userstatus:
+     try:
       if userstatus.status in (ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.OWNER):
         try:
           await app.approve_chat_join_request(chat.id, int(user_id))
@@ -75,7 +76,7 @@ async def approve_join_req(_, cq: CallbackQuery):
           await cq.message.edit_caption(str(e))
           await cq.message.delete()
           print(str(e))
-    except Exception as e:
+     except Exception as e:
        print(str(e))
 
 @app.on_callback_query(filters.regex("cb_decline#"), group=-1)
@@ -84,7 +85,8 @@ async def decline_join_req(_, cq: CallbackQuery):
     chat = cq.message.chat
     userstatus = await app.get_chat_member(chat.id, user.id)
     ok, user_id = cq.data.split("#")
-    try:
+    if userstatus:
+     try:
       if userstatus.status in (ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.OWNER):
         try:
           await app.decline_chat_join_request(chat.id, int(user_id))
@@ -100,7 +102,7 @@ async def decline_join_req(_, cq: CallbackQuery):
           print(e)
       else:
          await cq.answer("YOU CANT USE THIS!", True)
-    except Exception:
+     except Exception:
        print(Exception)
     
 
