@@ -30,8 +30,8 @@ __help__ = """
 **» /joinreq** - To Turn On Approve And Decline Buttons In The Chat
 **» /tgm** - Upload Photo (Under 5mb) To Cloud And Give Link 
 **» /upscale** - Reply To A Image To Upscale It (Improve Its Quality)
-
-
+**» /id** - Get The Id of a User
+**» /gstatus** - Get The Group Stats (TRY IT)
 
 **[NOTE: JOIN REQUESTS ONLY WORKS IF APPROVE SETTINGS ARE ENABLED]**
 """

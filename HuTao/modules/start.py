@@ -16,6 +16,7 @@ from HuTao.helpers import paginate_modules
 from HuTao.Config import COMMAND_HANDLER
 import HuTao.sql.rules_sql as sql
 from HuTao.helpers.string import *
+from HuTao.modules.notes import note_redirect
 
 
 PM_TEXT = f"""
@@ -86,6 +87,9 @@ async def start(_, message: Message):
             rules = sql.get_rules(cid)
             textt = rules
             await message.reply(f"**RULES FOR THIS CHAT ARE:**\n\n{textt}")
+        
+        if "note_" in name:
+            await note_redirect(message)
     else:
         await message.reply_photo(
             photo="https://graph.org//file/2bba048fefef637247d6a.png",
