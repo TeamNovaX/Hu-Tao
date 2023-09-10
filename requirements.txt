@@ -7,7 +7,7 @@ beautifulsoup4
 motor
 asyncio
 telegraph
-pillow 
+pillow==9.5.0
 unidecode
 psycopg2
 cachetools
