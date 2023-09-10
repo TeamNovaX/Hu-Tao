@@ -31,5 +31,3 @@ OWNER = list({int(x)for x in ("6149191605").split()}) #OWNER ID
 DB_URL = "" # MONGO DB URL
 
 SQL_URL = "" # ELEPHANT SQL URL
-
-LEXICA_API = "https://api.qewertyy.me"

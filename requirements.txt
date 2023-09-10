@@ -15,4 +15,6 @@ sqlalchemy==1.4.46
 httpx[http2]
 pytz
 emojis
+blackpink
 gpytranslate
+lexica-api
