@@ -5,7 +5,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, Message
 from pyrogram.enums import *
 
-from HuTao import app, SUDO
+from HuTao import app, OWNER
 from HuTao.Config import COMMAND_HANDLER
 from HuTao.database.joinreq_db import *
 from HuTao.helpers import *
@@ -17,7 +17,7 @@ async def chat_join_req(_, message:Message):
     chat = message.chat
     status = await jreq.find_one({"chat_id" : chat.id})
 
-    if user.id in SUDO:
+    if user.id in OWNER:
         try:
             await app.approve_chat_join_request(chat.id, user.id)
             await app.send_photo(
