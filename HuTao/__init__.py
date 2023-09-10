@@ -17,7 +17,6 @@ from HuTao.Config import (
     LOG_CHANNEL_ID,
     OWNER,
     SQL_URL,
-    LEXICA_API,
     COMMAND_HANDLER,
     SUPPORT_CHAT,
 )
