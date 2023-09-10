@@ -14,7 +14,7 @@ async def isApproved(chat_id : int,user_id : int) -> bool:
     return bool(await approvedb.find_one({"chat_id" : chat_id} , {"user_ids" : {"$in" : [user_id]}}))
 
 async def disapprove_user(chat_id : int,user_id : int):
-    r = await approvedb.update_one({"chat_id" : chat_id} , {"$push" : {"user_ids" : user_id}})
+    r = await approvedb.update_one({"chat_id" : chat_id} , {"$pull" : {"user_ids" : user_id}})
     return r.modified_count > 0
 
 async def approved_users(chat_id : int) -> list:
