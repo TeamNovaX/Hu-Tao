@@ -6,32 +6,18 @@ from HuTao.database import *
 approvedb = dbname["approvals"] 
 
 async def approve_user(chat_id : int,user_id : int ):
-    chat = await approvedb.find_one({"chat_id" : chat_id})
-    if chat:
-        list = chat.get("user_ids")
-        list.append(user_id)
-        return await approvedb.update_one({"chat_id": chat_id}, {"$set": {"user_ids": list}}, upsert=True)
-    list = [user_id]
-    return await approvedb.update_one({"chat_id" : chat_id},{"$set" : {"user_ids" : list}}, upsert=True)   
+    r = await approvedb.update_one({"chat_id" : chat_id} , {"$addToSet" : {"user_ids" : user_id}} , upsert = True)
+    return r.modified_count > 0
 
 
 async def isApproved(chat_id : int,user_id : int) -> bool:
-    chat = await approvedb.find_one({"chat_id" : chat_id})
-    if chat:
-        check = chat.get("user_ids")
-        if user_id in check:
-            return True
-        return False
+    return bool(await approvedb.find_one({"chat_id" : chat_id} , {"user_ids" : {"$in" : [user_id]}}))
 
 async def disapprove_user(chat_id : int,user_id : int):
-    chat = await approvedb.find_one({"chat_id" : chat_id}) 
-    if chat:
-        list = chat.get("user_ids")
-        list.remove(user_id)
-        return await approvedb.update_one({"chat_id": chat_id}, {"$set": {"user_ids": list}}, upsert=True) 
+    r = await approvedb.update_one({"chat_id" : chat_id} , {"$push" : {"user_ids" : user_id}})
+    return r.modified_count > 0
 
 async def approved_users(chat_id : int) -> list:
     chat = await approvedb.find_one({"chat_id" : chat_id}) 
-    if chat :        
-        return chat["user_ids"]
-    return []
+    return chat["user_ids"] if chat else []    
+
