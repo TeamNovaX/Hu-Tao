@@ -1,5 +1,5 @@
 import re
-from HuTao import app
+from HuTao import app, COMMAND_HANDLER
 from HuTao.database.filters_db import *
 from HuTao.helpers.filters_func import GetFIlterMessage, get_text_reason, SendFilterMessage
 from HuTao.helpers.status import user_admin
@@ -8,7 +8,7 @@ from pyrogram.enums import ChatMemberStatus
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 
 
-@app.on_message(filters.command("filter") & filters.group)
+@app.on_message(filters.command("filter", COMMAND_HANDLER) & filters.group)
 async def _filter(client, message):
     
     chat_id = message.chat.id 
@@ -67,7 +67,7 @@ async def FilterCheckker(client, message):
                 data_type=data_type
             )
 
-@app.on_message(filters.command('filters') & filters.group)
+@app.on_message(filters.command('filters', COMMAND_HANDLER) & filters.group)
 async def _filters(client, message):
     chat_id = message.chat.id
     chat_title = message.chat.title 
@@ -91,7 +91,7 @@ async def _filters(client, message):
     )
 
 
-@app.on_message(filters.command('stopall') & filters.group)
+@app.on_message(filters.command('stopall', COMMAND_HANDLER) & filters.group)
 async def stopall(client, message):
     chat_id = message.chat.id
     chat_title = message.chat.title 

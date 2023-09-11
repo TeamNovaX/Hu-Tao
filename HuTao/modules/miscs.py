@@ -101,7 +101,7 @@ TIME TAKEN : {timelog} S**""")
         await sent_message.delete()
 
 
-@app.on_message(filters.command("blackpink"))
+@app.on_message(filters.command("blackpink", COMMAND_HANDLER))
 async def blackpink(_, message):
     text = message.text[len("/blackpink ") :]
     bp(f"{text}").save(f"blackpink_{message.from_user.id}.png")

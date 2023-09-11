@@ -1694,14 +1694,14 @@ async def headlines_btn(client: Client, cq: CallbackQuery):
             ],
             [
                 InlineKeyboardButton(text=lchdpin, callback_data=f"headlines_lchdpin_{gid}"),
-                InlineKeyboardButton(text="Auto Unpin (LC)", callback_data=f"unpin_call_lc_{gid}")
+                InlineKeyboardButton(text="Auto Unpin (LC)", callback_data=f"anpin_call_lc_{gid}")
             ],
             [
                 InlineKeyboardButton(text=malhd, callback_data=f"headlines_malhd_{gid}")
             ],
             [
                 InlineKeyboardButton(text=malhdpin, callback_data=f"headlines_malhdpin_{gid}"),
-                InlineKeyboardButton(text="Auto Unpin (MAL)", callback_data=f"unpin_call_mal_{gid}")
+                InlineKeyboardButton(text="Auto Unpin (MAL)", callback_data=f"anpin_call_mal_{gid}")
             ],
             [
                 InlineKeyboardButton(text="Back", callback_data=f"settogl_call_{gid}")
@@ -1723,7 +1723,7 @@ TIMES = {
 }
 
 
-@app.on_callback_query(filters.regex(pattern=r"unpin_(.*)"))
+@app.on_callback_query(filters.regex(pattern=r"anpin_(.*)"))
 async def auto_unpin(client: Client, cq: CallbackQuery):
     cus = cq.from_user.id
     qry = cq.data.split('_')[1]

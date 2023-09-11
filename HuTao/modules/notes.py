@@ -1,4 +1,4 @@
-from HuTao import app, BOT_USERNAME
+from HuTao import app, BOT_USERNAME, COMMAND_HANDLER
 from pyrogram import filters
 from HuTao.database.notes_db import *
 from HuTao.helpers.notes_func import GetNoteMessage, exceNoteMessageSender, privateNote_and_admin_checker
@@ -7,7 +7,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup , Message 
 from pyrogram.enums import ChatMemberStatus
 
 
-@app.on_message(filters.command("save") & filters.group)
+@app.on_message(filters.command("save", COMMAND_HANDLER) & filters.group)
 @user_admin
 async def _save(client, message):
     chat_id = message.chat.id
@@ -27,7 +27,7 @@ async def _save(client, message):
 
 
 
-@app.on_message(filters.command("get") & filters.group)
+@app.on_message(filters.command("get", COMMAND_HANDLER) & filters.group)
 async def _getnote(client, message):
     chat_id = message.chat.id
     if not len(message.command) >= 2:
@@ -50,7 +50,7 @@ async def regex_get_note(client, message):
 PRIVATE_NOTES_TRUE = ['on', 'true', 'yes', 'y']
 PRIVATE_NOTES_FALSE = ['off', 'false', 'no', 'n']
 
-@app.on_message(filters.command("privatenotes") & filters.group)
+@app.on_message(filters.command("privatenotes", COMMAND_HANDLER) & filters.group)
 @user_admin
 async def PrivateNote(client, message):
     chat_id = message.chat.id
@@ -89,7 +89,7 @@ async def PrivateNote(client, message):
                 quote=True
             )
             
-@app.on_message(filters.command("clear") & filters.group)
+@app.on_message(filters.command("clear", COMMAND_HANDLER) & filters.group)
 @user_admin
 async def Clear_Note(client, message):
     chat_id = message.chat.id 
@@ -118,7 +118,7 @@ async def Clear_Note(client, message):
         )
 
 
-@app.on_message(filters.command("clearall") & filters.group)
+@app.on_message(filters.command("clearall", COMMAND_HANDLER) & filters.group)
 async def ClearAll_Note(client, message):
     owner_id = message.from_user.id
     chat_id = message.chat.id 
