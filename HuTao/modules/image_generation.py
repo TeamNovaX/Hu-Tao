@@ -19,7 +19,7 @@ async def generate(_, message):
     btns = []
     PromptDB[user.id] = {'prompt':prompt,'reply_to_id':message.id}
     for i in ImageModels:
-        btns.append(InlineKeyboardButton(text=i,callback_data=f"draw.{ImageModels[i]}.{user.id}.{message.id}"))
+        btns.append(InlineKeyboardButton(text=i,callback_data=f"draw.{ImageModels[i]}.{user.id}"))
     btns = [[btns[0],btns[1]],[btns[2],btns[3]],[btns[4],btns[5]]]
     await message.reply_photo("https://graph.org//file/a24ad0babb868d539b744.jpg", caption=f"**SELECT A MODEL TO GENERATE**",reply_markup=InlineKeyboardMarkup(btns))
 
@@ -27,8 +27,7 @@ async def generate(_, message):
 async def draw(_,query):
     global PromptDB
     data = query.data.split('.')
-    auth_user = int(data[-2])
-    reply_id = int(data[-1])
+    auth_user = int(data[-1])
     if query.from_user.id != auth_user:
         return await query.answer("Not Your Query!")
     promptdata = PromptDB.get(auth_user,None)
@@ -47,5 +46,5 @@ async def draw(_,query):
     await app.send_media_group(
         chat_id=query.message.chat.id,
         media=images,
-        reply_to_message_id=reply_id
+        reply_to_message_id=promptdata['reply_to_id']
     )
