@@ -18,3 +18,6 @@
 
 # CONTRIBUTORS
 [![Contributors](https://contrib.rocks/image?repo=TeamNovaX/Hu-Tao)](https://github.com/TeamNovaX/Hu-Tao/graphs/contributors)
+
+<a href="https://heroku.com/deploy?template=https://github.com/ImmortalXnetwork/Hu-Tao"><img sheight="40"></a>
+<a href="https://heroku.com/deploy?template=https://github.com/ImmortalXnetwork/Hu-Tao"><img src="https://www.herokucdn.com/rc="https://www.herokucdn.com/deploy/button.svg" height="40"></a>
