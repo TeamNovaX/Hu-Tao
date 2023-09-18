@@ -1,14 +1,16 @@
 {
-      "name": "Hu-Tao",
-      "description": "An Genshin Impact themed Telegram group management bot.",
-      "logo": "https://graph.org//file/e67a2df8113033f8053b6.jpg",
+      "name": "Hu Tao",
+      "description": "Telegram Group Management Bot.",
+      "logo": "https://telegra.ph/file/b75457eec792779e5b361.jpg",
       "keywords": [
          "telegram",
-         "Genshin",
+         "sexy",
          "group",
-         "manager"
+         "manager",
+         "Hutao"
       ],   
    "repository": "https://github.com/ImmortalXnetwork/Hu-Tao",
+   "stack": "heroku-20",
    "addons": [
       {
          "options": {
@@ -16,7 +18,7 @@
          },
          "plan": "heroku-postgresql"
       }
-   ],
+   ]
    "env": {
       "BOT_TOKEN": {
          "description": "Your bot token. Get one from @BotFather",
