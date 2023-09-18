@@ -19,8 +19,12 @@
 # CONTRIBUTORS
 [![Contributors](https://contrib.rocks/image?repo=TeamNovaX/Hu-Tao)](https://github.com/TeamNovaX/Hu-Tao/graphs/contributors)
 
-<details>
-	<summary>Deploy Options</summary>
-<a href="https://heroku.com/deploy?template=https://github.com/ImmortalXnetwork/Hu-Tao"><img sheight="40"></a>
-<a href="https://heroku.com/deploy?template=https://github.com/ImmortalXnetwork/Hu-Tao"><img src="https://www.herokucdn.com/rc="https://www.herokucdn.com/deploy/button.svg" height="40"></a>
+<p align="center">
+<b>𝗗𝗘𝗣𝗟𝗢𝗬𝗠𝗘𝗡𝗧 𝗠𝗘𝗧𝗛𝗢𝗗𝗦</b>
+</p>
 
+<h3 align="center">
+    ─「 ᴅᴇᴩʟᴏʏ ᴏɴ ʜᴇʀᴏᴋᴜ 」─
+</h3>
+
+<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/TheAnonymous2005/FallenRobot"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
