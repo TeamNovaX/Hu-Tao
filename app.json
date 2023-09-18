@@ -58,15 +58,20 @@
          "required": true,
          "value": "-123" 
       },
-      "Owner": {
+      "OWNER": {
          "description": "Id of bot owner",
          "required": true,
          "value": "" 
       },
-     "SUDO": {
-         "description": "Set your best friends id as sudo.",
+     "DB_URL": {
+         "description": "Add a Mongodb url to store data",
          "required": true,
-         "value": "1805959544 6149191605" 
+         "value": "" 
       },
+     "SQL_URL": {
+         "description": "Add a elephantsql url to store data",
+         "required": true,
+         "value": "" 
+      },    
    }
 }
