@@ -5,7 +5,7 @@ from async_pymongo import AsyncClient
 
 from HuTao import DB_URL
 
-DBNAME = "KOMI"
+DBNAME = "HUTAO"
 
 mongo = AsyncClient(DB_URL)
 dbname = mongo[DBNAME]
