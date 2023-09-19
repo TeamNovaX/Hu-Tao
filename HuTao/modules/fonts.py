@@ -1,10 +1,10 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from HuTao import app
+from HuTao import app, COMMAND_HANDLER
 from HuTao.database.fontdb import Fonts
 
-@app.on_message(filters.command(["font", "fonts"]))
+@app.on_message(filters.command(["font", "fonts", COMMAND_HANDLER]) & filters.private)
 async def style_buttons(c, m, cb=False):
     buttons = [
         [

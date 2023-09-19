@@ -11,7 +11,6 @@ from HuTao.helpers import *
 
 
 @app.on_message(filters.command("rules", COMMAND_HANDLER) & filters.group)
-@user_admin
 async def get_rules(_, m: Message):
     msg_id = m.reply_to_message.id if m.reply_to_message else m.id
 
