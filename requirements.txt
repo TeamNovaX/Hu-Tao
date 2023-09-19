@@ -9,7 +9,6 @@ asyncio
 telegraph
 pillow==9.5.0
 unidecode
-psycopg2
 cachetools
 sqlalchemy==1.4.46
 httpx[http2]
