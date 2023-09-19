@@ -69,7 +69,7 @@ async def add_user(user_id, username=None, chat_id=None, chat_title=None, Forwar
             return
 
         for UserChat in UsersChats:
-            GetUserChat = await UserChat.get('chat_id')
+            GetUserChat = UserChat.get('chat_id')
             GetUserChatList.append(GetUserChat)
 
         ChatsIDs = len(GetUserChatList) + 1
