@@ -1,49 +1,148 @@
-from threading import RLock
-from time import time
+#MIT License
+#Copyright (c) 2023, ©NovaNetworks
 
-from ..database import *
+import datetime
+from HuTao.database import *
+
+users = dbname["users"]
+chats = dbname["chats"]
+
+first_found_date = datetime.datetime.now()
+
+def add_user(user_id, username=None, chat_id=None, chat_title=None, Forwared=False):
+    
+    UserData = users.find_one(
+        {
+            'user_id': user_id
+        }
+    )
+
+    if UserData == None:
+        UsersNums = users.count_documents({})
+        UsersIDs = UsersNums + 1
+        
+        if Forwared:
+            UsersData = {
+                '_id': UsersIDs,
+                'user_id': user_id,
+                'username': username,
+                'chats': [],
+                'first_found_date': first_found_date
+                }
+        else:
+            UsersData = {
+                '_id': UsersIDs,
+                'user_id': user_id,
+                'username': username,
+                'chats': [
+                    {   '_id': 1,
+                        'chat_id': chat_id,
+                        'chat_title': chat_title
+                    }
+                ],
+                'first_found_date': first_found_date
+                }
 
 
-usrdb = dbname["users"]
+        users.insert_one(
+            UsersData
+        )
 
-class Users():
-    async def update_user(usrdb, name: str, username: str = None):
-        if name != usrdb.user_info["name"] or username != usrdb.user_info["username"]:
-            return await usrdb.update(
-                {"_id": usrdb.user_id},
-                {"username": username, "name": name},
+    else:
+        if username != UserData['username']:
+            users.update_one(
+                {
+                    'user_id': user_id
+                },
+                {
+                    "$set": {
+                        'username': username
+                    }
+                },
+                upsert=True
             )
-        return True
 
-    async def delete_user(self):
-        return await usrdb.delete_one({"_id": self.user_id})
+        GetUserChatList = []
+        UsersChats = UserData['chats']
 
-    @staticmethod
-    async def count_users():
-        collection = usrdb
-        return await collection.count()
+        if len(UsersChats) == 0:
+            return
 
-    async def get_my_info(self):
-        return await usrdb.user_info
+        for UserChat in UsersChats:
+            GetUserChat = UserChat.get('chat_id')
+            GetUserChatList.append(GetUserChat)
 
-    @staticmethod
-    async def list_users():
-        collection = usrdb
-        return await collection.find_all()
+        ChatsIDs = len(GetUserChatList) + 1
+        if not chat_id in GetUserChatList:
+            users.update(
+                {
+                    'user_id': user_id
+                },
+                {
+                '$push': {
+                    'chats': {
+                        '_id': ChatsIDs,
+                        'chat_id': chat_id,
+                        'chat_title': chat_title
+                            }
+                        }
+                }
 
-    @staticmethod
-    async def get_user_info(user_id: int or str):
-            collection = usrdb
-            if isinstance(user_id, int):
-                curr = await collection.find_one({"_id": user_id})
-            elif isinstance(user_id, str):
-                curr = await collection.find_one({"username": user_id[1:]})
-            else:
-                curr = None
+            )
+    
 
-            if curr:
-                return curr
+def add_chat(chat_id, chat_title):
+    ChatData = chats.find_one(
+        {
+            'chat_id': chat_id
+        }
+    )
 
-            return {}
+    if ChatData == None:
+        ChatsNums = chats.count_documents({})
+        ChatsIDs = ChatsNums + 1
 
+        ChatData = {
+            '_id': ChatsIDs,
+            'chat_id': chat_id,
+            'chat_title': chat_title,
+            'first_found_date': first_found_date
+            }
+        
+        chats.insert_one(
+            ChatData
+        )
+    else:
+        chats.update_one(
+            {
+                'chat_id': chat_id
+            },
+            {
+                "$set": {
+                    'chat_id': chat_id,
+                    'chat_title': chat_title
+                }
+            },
+            upsert=True
+        )
 
+def GetAllChats() -> list:
+    CHATS_LIST = []
+    chatsList = chats.find({})
+    for chatData in chatsList:
+        chat_id = chatData['chat_id']
+        CHATS_LIST.append(chat_id)
+    return CHATS_LIST
+    
+
+def GetChatName(chat_id):
+    ChatData = chats.find_one(
+        {
+            'chat_id': chat_id
+        }
+    )
+    if ChatData is not None:
+        chat_title = ChatData['chat_title']
+        return chat_title
+    else:
+        return None 
