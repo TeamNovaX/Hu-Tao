@@ -9,16 +9,16 @@ chats = dbname["chats"]
 
 first_found_date = datetime.datetime.now()
 
-def add_user(user_id, username=None, chat_id=None, chat_title=None, Forwared=False):
+async def add_user(user_id, username=None, chat_id=None, chat_title=None, Forwared=False):
     
-    UserData = users.find_one(
+    UserData = await users.find_one(
         {
             'user_id': user_id
         }
     )
 
     if UserData == None:
-        UsersNums = users.count_documents({})
+        UsersNums = await users.count_documents({})
         UsersIDs = UsersNums + 1
         
         if Forwared:
@@ -44,13 +44,13 @@ def add_user(user_id, username=None, chat_id=None, chat_title=None, Forwared=Fal
                 }
 
 
-        users.insert_one(
+        await users.insert_one(
             UsersData
         )
 
     else:
         if username != UserData['username']:
-            users.update_one(
+            await users.update_one(
                 {
                     'user_id': user_id
                 },
@@ -69,12 +69,12 @@ def add_user(user_id, username=None, chat_id=None, chat_title=None, Forwared=Fal
             return
 
         for UserChat in UsersChats:
-            GetUserChat = UserChat.get('chat_id')
+            GetUserChat = await UserChat.get('chat_id')
             GetUserChatList.append(GetUserChat)
 
         ChatsIDs = len(GetUserChatList) + 1
         if not chat_id in GetUserChatList:
-            users.update(
+            await users.update(
                 {
                     'user_id': user_id
                 },
@@ -91,15 +91,15 @@ def add_user(user_id, username=None, chat_id=None, chat_title=None, Forwared=Fal
             )
     
 
-def add_chat(chat_id, chat_title):
-    ChatData = chats.find_one(
+async def add_chat(chat_id, chat_title):
+    ChatData = await chats.find_one(
         {
             'chat_id': chat_id
         }
     )
 
     if ChatData == None:
-        ChatsNums = chats.count_documents({})
+        ChatsNums = await chats.count_documents({})
         ChatsIDs = ChatsNums + 1
 
         ChatData = {
@@ -109,11 +109,11 @@ def add_chat(chat_id, chat_title):
             'first_found_date': first_found_date
             }
         
-        chats.insert_one(
+        await chats.insert_one(
             ChatData
         )
     else:
-        chats.update_one(
+        await chats.update_one(
             {
                 'chat_id': chat_id
             },
@@ -126,17 +126,17 @@ def add_chat(chat_id, chat_title):
             upsert=True
         )
 
-def GetAllChats() -> list:
+async def GetAllChats() -> list:
     CHATS_LIST = []
-    chatsList = chats.find({})
+    chatsList = await chats.find({})
     for chatData in chatsList:
         chat_id = chatData['chat_id']
         CHATS_LIST.append(chat_id)
     return CHATS_LIST
     
 
-def GetChatName(chat_id):
-    ChatData = chats.find_one(
+async def GetChatName(chat_id):
+    ChatData = await chats.find_one(
         {
             'chat_id': chat_id
         }
@@ -145,4 +145,20 @@ def GetChatName(chat_id):
         chat_title = ChatData['chat_title']
         return chat_title
     else:
-        return None 
+        return None
+    
+async def get_user_info(user_id: int or str):
+    if isinstance(user_id, int):
+        cur = users.find_one({"user_id": user_id})
+    elif isinstance(user_id, str):
+        cur = users.find_one({"username": user_id})
+    
+    else:
+        cur = None
+
+    if cur:
+        return cur
+    
+    return {}
+    
+

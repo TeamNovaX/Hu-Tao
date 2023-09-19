@@ -5,7 +5,7 @@ from pyrogram.enums import MessageEntityType as entity
 from pyrogram.types.messages_and_media.message import Message
 
 from HuTao import app
-from HuTao.database.users_db import Users
+from HuTao.database.users_db import *
 
 
 async def extract_user(c: app, m: Message) -> Tuple[int, str, str]:
@@ -41,9 +41,9 @@ async def extract_user(c: app, m: Message) -> Tuple[int, str, str]:
                         pass
 
                 try:
-                    user = await Users.get_user_info(user_found)
-                    user_id = user["_id"]
-                    user_first_name = user["name"]
+                    user = await get_user_info(user_found)
+                    user_id = user["user_id"]
+                    user_first_name = user["user_first_name"]
                     user_name = user["username"]
                 except KeyError:
                     try:
@@ -77,8 +77,8 @@ async def extract_user(c: app, m: Message) -> Tuple[int, str, str]:
 
             if user_id is not None:
                 try:
-                    user = await Users.get_user_info(user_id)
-                    user_first_name = user["name"]
+                    user = await get_user_info(user_id)
+                    user_first_name = user["user_first_name"]
                     user_name = user["username"]
                 except Exception as ef:
                     try:
