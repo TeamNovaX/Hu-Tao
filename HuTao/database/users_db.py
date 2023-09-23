@@ -74,7 +74,7 @@ async def add_user(user_id, username=None, chat_id=None, chat_title=None, Forwar
 
         ChatsIDs = len(GetUserChatList) + 1
         if not chat_id in GetUserChatList:
-            await users.update(
+            await users.update_one(
                 {
                     'user_id': user_id
                 },
