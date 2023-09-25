@@ -126,14 +126,18 @@ async def add_chat(chat_id, chat_title):
             upsert=True
         )
 
-async def GetAllChats() -> list:
-    CHATS_LIST = []
-    chatsList = await chats.find({})
-    for chatData in chatsList:
-        chat_id = chatData['chat_id']
-        CHATS_LIST.append(chat_id)
-    return CHATS_LIST
-    
+async def get_all_chat_ids():
+    chat_ids = []
+    async for chat in chats.find({}):
+        chat_ids.append(chat['chat_id'])
+    return chat_ids
+
+async def get_all_user_ids():
+    user_ids = []
+    async for user in users.find({}):
+        user_ids.append(user['user_id'])
+    return user_ids
+
 
 async def GetChatName(chat_id):
     ChatData = await chats.find_one(
@@ -146,7 +150,8 @@ async def GetChatName(chat_id):
         return chat_title
     else:
         return None
-    
+
+
 async def get_user_info(user_id: int or str):
     if isinstance(user_id, int):
         cur = users.find_one({"user_id": user_id})
