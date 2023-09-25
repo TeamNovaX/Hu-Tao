@@ -1,4 +1,4 @@
-n#MIT License
+#MIT License
 #Copyright (c) 2023, ©NovaNetworks
 
 from async_pymongo import AsyncClient
