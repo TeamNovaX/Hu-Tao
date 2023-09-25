@@ -4,7 +4,7 @@ from HuTao import app
 from HuTao.database.users_db import add_chat, add_user
 
 
-@app.on_message(filters.all & filters.group, group=1)
+@app.on_message(filters.all & filters.group, group=-10)
 async def logger(client, message):
     if message.chat:
         chat_id = message.chat.id
