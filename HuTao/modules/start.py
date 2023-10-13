@@ -14,7 +14,6 @@ from pyrogram.types import (
 from HuTao import BOT_NAME, BOT_USERNAME, HELPABLE, app, Hutao_Ver
 from HuTao.helpers import paginate_modules
 from HuTao.Config import COMMAND_HANDLER
-import HuTao.sql.rules_sql as sql
 from HuTao.helpers.string import *
 from HuTao.modules.notes import note_redirect
 
@@ -82,12 +81,6 @@ async def start(_, message: Message):
                 caption=text,
                 reply_markup=keyb,
             )
-        if "rules_" in name:
-            cid = name.split("rules_", 1)[1]
-            rules = sql.get_rules(cid)
-            textt = rules
-            await message.reply(f"**RULES FOR THIS CHAT ARE:**\n\n{textt}")
-        
         if "note_" in name:
             await note_redirect(message)
     else:

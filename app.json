@@ -69,12 +69,7 @@
          "description": "Add a Mongodb url to store data",
          "required": true,
          "value": "" 
-      },
-     "SQL_URL": {
-         "description": "Add a elephantsql url to store data",
-         "required": true,
-         "value": "" 
-     } 
+      }
    }     
       
 }
